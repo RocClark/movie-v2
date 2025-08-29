@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from typing import List
 from models.seat import Seat
 from data.db import seats
@@ -12,7 +12,15 @@ router = APIRouter(
 async def get_seats():
     return seats
 
-@router.post("/")
+
+@router.post("/{seat_id}")
 async def reserve_seat(seat_id: int):
-    # Placeholder: Later we’ll update seatTaken = True
-    return {"msg": f"Reservation for seat {seat_id} coming soon!"}
+    # find seat by ID
+    for seat in seats:
+        if seat.id == seat_id:
+            if seat.seatTaken:
+                raise HTTPException(status_code=400, detail="Seat already taken")
+            seat.seatTaken = True
+            return {"msg": f"Seat {seat.seatNum} reserved successfully!"}
+    
+    raise HTTPException(status_code=404, detail="Seat not found")
