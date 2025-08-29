@@ -1,11 +1,12 @@
 from fastapi import FastAPI
+from routers import movies, seats
 
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return {"message": "Hello, FastAPI is working!"}
+# Register routers
+app.include_router(movies.router)
+app.include_router(seats.router)
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str = None):
-    return {"item_id": item_id, "q": q}
+@app.get("/")
+def root():
+    return {"msg": "Backend is running!"}
