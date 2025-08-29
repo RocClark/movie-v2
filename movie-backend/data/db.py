@@ -7,37 +7,47 @@ movies = [
         id=1,
         title="The last DJ",
         description="A washed-up radio DJ gets one last chance to reclaim his glory.",
-        image="/lastdj.webp"
+        image="/lastdj.webp",
+        times=["1:00 PM", "3:30 PM", "6:00 PM", "8:30 PM"],
     ),
     Movie(
         id=2,
         title="Revenge of the Jocks",
         description="The tables turn when a group of underdog jocks take on their high school bullies.",
-        image="/AI Revenge of the Jocks.webp"
+        image="/AI Revenge of the Jocks.webp",
+                times=["12:00 PM", "2:45 PM", "5:15 PM", "7:45 PM"],
+
     ),
     Movie(
         id=3,
         title="Space Ninja",
         description="A rogue ninja fights for survival in a futuristic galaxy torn by war.",
-        image="/Spaceballs.webp"
+        image="/Spaceballs.webp",
+                times=["11:00 AM", "1:30 PM", "4:00 PM", "9:00 PM"],
+
     ),
     Movie(
         id=4,
         title="Dragon for a Day",
         description="A girl discovers she can transform into a dragon — but only until sunset.",
-        image="/dragon.webp"
+        image="/dragon.webp",
+        times=["1:00 PM", "3:30 PM", "6:00 PM", "8:30 PM"],
     ),
     Movie(
         id=5,
         title="Honey, the Kids are Gone",
         description="Two parents rediscover their youth after their kids mysteriously vanish for a weekend.",
-        image="/kidsgone.webp"
+        image="/kidsgone.webp",
+                times=["12:00 PM", "2:45 PM", "5:15 PM", "7:45 PM"],
+
     ),
     Movie(
         id=6,
         title="Adventure in Softball",
         description="A ragtag softball team fights for their first championship win.",
-        image="/ADventure in SoftBall.webp"
+        image="/ADventure in SoftBall.webp",
+                times=["11:00 AM", "1:30 PM", "4:00 PM", "9:00 PM"],
+
     ),
 ]
 

@@ -5,3 +5,4 @@ class Movie(BaseModel):
     title: str
     description: str
     image: str
+    times: list[str]
