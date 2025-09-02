@@ -52,6 +52,7 @@ export const TicketProvider = ({ children }: { children: React.ReactNode }) => {
   });
 
   const pickMovie = (newMovie: string) => {
+    console.log("🎬 Selected movie:", newMovie); // 👈 debug log
     setTicket((prev) => ({ ...prev, movie: newMovie }));
   };
 
