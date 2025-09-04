@@ -1,5 +1,5 @@
 "use client";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 function Header() {
