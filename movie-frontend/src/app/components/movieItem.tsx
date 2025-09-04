@@ -41,7 +41,7 @@ function MovieItem({ title, description, image }: MovieItemProps) {
       {/* Link to select time */}
       <div className="text-center">
         <Link
-          href="/movieHome/selectTime"
+          href="../seatSelect"
           className="sm:px-4 lg:px-8 font-serif text-2xl text-center text-white"
           onClick={handlePickMovie}
         >
