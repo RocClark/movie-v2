@@ -116,7 +116,7 @@ function MovieForm() {
       {formValid && (
         <div className="mt-6">
           <Link
-            href="/movieHome/confirmation"
+            href="../confirmation"
             className="block text-center px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"
           >
             Go to Confirmation

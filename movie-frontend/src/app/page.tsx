@@ -1,40 +1,40 @@
-"use client";
+import MovieItem from "./components/movieItem";
 
-import Header from "./components/header";
-import MovieList from "./components/movieList";
-
-export default function SelectMovie() {
-  // Temporary hardcoded movies
+export default function MovieList() {
   const movies = [
     {
-      id: "1",
       title: "Inception",
-      description: "A mind-bending thriller by Christopher Nolan.",
-      image: "/images/inception.jpg",
+      description: "A thief who steals corporate secrets through dreams.",
+      image: "/inception.jpg",
+      times: [
+        { id: 1, title: "14:00" },
+        { id: 2, title: "16:30" },
+        { id: 3, title: "19:00" },
+      ],
     },
     {
-      id: "2",
-      title: "The Dark Knight",
-      description: "Batman faces off against the Joker in Gotham.",
-      image: "/images/dark-knight.jpg",
-    },
-    {
-      id: "3",
       title: "Interstellar",
       description: "Explorers travel through a wormhole in space.",
-      image: "/images/interstellar.jpg",
+      image: "/interstellar.jpg",
+      times: [
+        { id: 4, title: "13:00" },
+        { id: 5, title: "17:00" },
+        { id: 6, title: "20:30" },
+      ],
     },
   ];
 
   return (
-    <div className="flex flex-wrap items-center justify-center min-h-screen bg-slate-900">
-      <div className="w-full">
-        <Header />
-      </div>
-
-      <div>
-        <MovieList movies={movies} />
-      </div>
-    </div>
+    <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {movies.map((movie) => (
+        <MovieItem
+          key={movie.title}
+          title={movie.title}
+          description={movie.description}
+          image={movie.image}
+          times={movie.times}
+        />
+      ))}
+    </ul>
   );
 }

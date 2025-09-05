@@ -1,27 +1,28 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { TicketReviewContext } from "../context/TicketContext";
+import TimeList from "./timeList";
+
+type Time = {
+  id: number;
+  title: string; // e.g. "14:00" or "07:30 PM"
+};
 
 type MovieItemProps = {
   title: string;
   description: string;
   image: string;
+  times: Time[]; // 👈 add available times for this movie
 };
 
-function MovieItem({ title, description, image }: MovieItemProps) {
-  const { pickMovie } = React.useContext(TicketReviewContext);
+function MovieItem({ title, description, image, times }: MovieItemProps) {
   const [showPopup, setShowPopup] = useState(false);
-
-  const handlePickMovie = () => {
-    pickMovie(title); // Store selected movie in context
-  };
 
   const togglePopup = () => setShowPopup(!showPopup);
 
   return (
     <li className="p-4 m-4 rounded-xl bg-slate-400 relative">
+      {/* Movie title */}
       <div>
         <h3 className="font-serif text-2xl text-center">{title}</h3>
       </div>
@@ -38,15 +39,10 @@ function MovieItem({ title, description, image }: MovieItemProps) {
         />
       </div>
 
-      {/* Link to select time */}
-      <div className="text-center">
-        <Link
-          href="../seatSelect"
-          className="sm:px-4 lg:px-8 font-serif text-2xl text-center text-white"
-          onClick={handlePickMovie}
-        >
-          Pick a Time
-        </Link>
+      {/* Times instead of Pick a Time link */}
+      <div className="text-center mt-4">
+        <h4 className="font-bold text-lg mb-2">Available Times</h4>
+        <TimeList times={times} movieTitle={title} />
       </div>
 
       {/* Popup */}

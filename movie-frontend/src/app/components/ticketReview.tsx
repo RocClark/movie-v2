@@ -49,7 +49,7 @@ function MovieReview() {
       {/* Payment Button */}
       <div className="text-center">
         <Link
-          href="../reviewTicket"
+          href="../payment"
           className="px-6 py-2 bg-[#33a2d9] hover:bg-sky-600 transition text-xl font-bold tracking-tight text-white rounded-md border-2 border-sky-700"
         >
           Buy your Ticket
