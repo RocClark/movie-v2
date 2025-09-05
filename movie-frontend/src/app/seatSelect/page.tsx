@@ -46,7 +46,7 @@ export default function SeatSelect() {
       {/* Review Button */}
       <div className="text-center p-8">
         <Link
-          href="/movieHome/ticketReview"
+          href="../reviewTicket"
           className="sm:px-4 lg:px-8 bg-[#33a2d9] text-2xl font-bold tracking-tight text-white rounded-md border-4 border-sky-700"
         >
           Review Your Ticket
