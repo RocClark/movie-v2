@@ -1,28 +1,37 @@
+"use client";
+import React, { useEffect, useState } from "react";
 import MovieItem from "./components/movieItem";
 
+type Movie = {
+  title: string;
+  description: string;
+  image: string;
+  times: { id: number; title: string }[];
+};
+
 export default function MovieList() {
-  const movies = [
-    {
-      title: "Inception",
-      description: "A thief who steals corporate secrets through dreams.",
-      image: "/inception.jpg",
-      times: [
-        { id: 1, title: "14:00" },
-        { id: 2, title: "16:30" },
-        { id: 3, title: "19:00" },
-      ],
-    },
-    {
-      title: "Interstellar",
-      description: "Explorers travel through a wormhole in space.",
-      image: "/interstellar.jpg",
-      times: [
-        { id: 4, title: "13:00" },
-        { id: 5, title: "17:00" },
-        { id: 6, title: "20:30" },
-      ],
-    },
-  ];
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/movies"); // adjust URL for backend
+        const data = await res.json();
+        setMovies(data);
+      } catch (err) {
+        console.error("Error fetching movies:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMovies();
+  }, []);
+
+  if (loading) {
+    return <p className="text-white">Loading movies...</p>;
+  }
 
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">

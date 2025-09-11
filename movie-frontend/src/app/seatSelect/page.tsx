@@ -3,27 +3,37 @@
 import MoiveScreen from "../components/movieScreen";
 import SeatList from "../components/movieSeatList";
 import Header from "../components/header";
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import { TicketReviewContext } from "../context/TicketContext";
-import { useContext } from "react";
+
+type Seat = {
+  id: number;
+  seatNum: string;
+  isBooked?: boolean;
+};
 
 export default function SeatSelect() {
   const { ticket } = useContext(TicketReviewContext);
+  const [seats, setSeats] = useState<Seat[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Hardcoded seats for now
-  const [seat] = useState([
-    { id: 1, seatNum: "A1" },
-    { id: 2, seatNum: "A2" },
-    { id: 3, seatNum: "A3" },
-    { id: 4, seatNum: "A4" },
-    { id: 5, seatNum: "A5" },
-    { id: 6, seatNum: "B1" },
-    { id: 7, seatNum: "B2" },
-    { id: 8, seatNum: "B3" },
-    { id: 9, seatNum: "B4" },
-    { id: 10, seatNum: "B5" },
-  ]);
+  useEffect(() => {
+    const fetchSeats = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/seats");
+        if (!res.ok) throw new Error("Failed to fetch seats");
+        const data = await res.json();
+        setSeats(data);
+      } catch (error) {
+        console.error("Error fetching seats:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSeats();
+  }, []);
 
   return (
     <div className="bg-slate-900 min-h-screen">
@@ -35,7 +45,13 @@ export default function SeatSelect() {
       </div>
 
       {/* Seats */}
-      {seat.length > 0 ? <SeatList seats={seat} /> : "Loading..."}
+      {loading ? (
+        <p className="text-center text-white mt-6">Loading seats...</p>
+      ) : seats.length > 0 ? (
+        <SeatList seats={seats} />
+      ) : (
+        <p className="text-center text-white mt-6">No seats available.</p>
+      )}
 
       {/* Show selected seats live */}
       <div className="text-center text-white mt-6">

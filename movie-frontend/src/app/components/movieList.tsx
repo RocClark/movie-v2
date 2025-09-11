@@ -5,6 +5,7 @@ interface Movie {
   title: string;
   description: string;
   image: string;
+  times: { id: number; title: string }[];
 }
 
 interface MovieListProps {
@@ -20,6 +21,7 @@ function MovieList(props: MovieListProps) {
           title={movie.title}
           description={movie.description}
           image={movie.image}
+          times={movie.times}
         />
       ))}
     </ul>
