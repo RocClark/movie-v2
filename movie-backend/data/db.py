@@ -1,56 +1,82 @@
 from models.movie import Movie
 from models.seat import Seat
 
-
 movies = [
     Movie(
         id=1,
         title="The last DJ",
         description="A washed-up radio DJ gets one last chance to reclaim his glory.",
         image="/lastdj.webp",
-        times=["1:00 PM", "3:30 PM", "6:00 PM", "8:30 PM"],
+        times=[
+            {"id": 1, "title": "1:00 PM"},
+            {"id": 2, "title": "3:30 PM"},
+            {"id": 3, "title": "6:00 PM"},
+            {"id": 4, "title": "8:30 PM"},
+        ],
     ),
     Movie(
         id=2,
         title="Revenge of the Jocks",
         description="The tables turn when a group of underdog jocks take on their high school bullies.",
         image="/AI Revenge of the Jocks.webp",
-                times=["12:00 PM", "2:45 PM", "5:15 PM", "7:45 PM"],
-
+        times=[
+            {"id": 5, "title": "12:00 PM"},
+            {"id": 6, "title": "2:45 PM"},
+            {"id": 7, "title": "5:15 PM"},
+            {"id": 8, "title": "7:45 PM"},
+        ],
     ),
     Movie(
         id=3,
         title="Space Ninja",
         description="A rogue ninja fights for survival in a futuristic galaxy torn by war.",
         image="/Spaceballs.webp",
-                times=["11:00 AM", "1:30 PM", "4:00 PM", "9:00 PM"],
-
+        times=[
+            {"id": 9, "title": "11:00 AM"},
+            {"id": 10, "title": "1:30 PM"},
+            {"id": 11, "title": "4:00 PM"},
+            {"id": 12, "title": "9:00 PM"},
+        ],
     ),
     Movie(
         id=4,
         title="Dragon for a Day",
         description="A girl discovers she can transform into a dragon — but only until sunset.",
         image="/dragon.webp",
-        times=["1:00 PM", "3:30 PM", "6:00 PM", "8:30 PM"],
+        times=[
+            {"id": 13, "title": "1:00 PM"},
+            {"id": 14, "title": "3:30 PM"},
+            {"id": 15, "title": "6:00 PM"},
+            {"id": 16, "title": "8:30 PM"},
+        ],
     ),
     Movie(
         id=5,
         title="Honey, the Kids are Gone",
         description="Two parents rediscover their youth after their kids mysteriously vanish for a weekend.",
         image="/kidsgone.webp",
-                times=["12:00 PM", "2:45 PM", "5:15 PM", "7:45 PM"],
-
+        times=[
+            {"id": 17, "title": "12:00 PM"},
+            {"id": 18, "title": "2:45 PM"},
+            {"id": 19, "title": "5:15 PM"},
+            {"id": 20, "title": "7:45 PM"},
+        ],
     ),
     Movie(
         id=6,
         title="Adventure in Softball",
         description="A ragtag softball team fights for their first championship win.",
         image="/ADventure in SoftBall.webp",
-                times=["11:00 AM", "1:30 PM", "4:00 PM", "9:00 PM"],
-
+        times=[
+            {"id": 21, "title": "11:00 AM"},
+            {"id": 22, "title": "1:30 PM"},
+            {"id": 23, "title": "4:00 PM"},
+            {"id": 24, "title": "9:00 PM"},
+        ],
     ),
 ]
 
+# Seats stay the same
 seats = [
     Seat(id=1, seatNum="1a", seatTaken=False),
     Seat(id=2, seatNum="2a", seatTaken=False),
@@ -111,5 +137,5 @@ seats = [
     Seat(id=57, seatNum="7f", seatTaken=False),
     Seat(id=58, seatNum="8f", seatTaken=False),
     Seat(id=59, seatNum="9f", seatTaken=False),
-    Seat(id=60, seatNum="10f", seatTaken=False)
+    Seat(id=60, seatNum="10f", seatTaken=False),
 ]
